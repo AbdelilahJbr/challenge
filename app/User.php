@@ -27,6 +27,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $hidden = [
-        'password',
+        'password','api_key',
     ];
+
+    public function liked()
+    {
+        return $this->belongsToMany('App\Shop', 'liked');
+    }
+
+    public function disliked()
+    {
+        return $this->belongsToMany('App\Shop', 'disliked');
+    }
 }
